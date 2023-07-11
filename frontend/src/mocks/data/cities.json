@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "name": "Ukraine",
+        "countryId": 1
+    },
+    {
+        "id": 2,
+        "name": "Poland",
+        "countryId": 2
+    }
+]

@@ -1,0 +1,63 @@
+@use 'src/styles/core/functions' as f;
+@use 'src/styles/core/mixin' as m;
+
+.chart {
+  // Setting component section
+  --_chart-bg: #{f.color(gray-1)};
+  --_chart-title-clr: #{f.color(white)};
+  --_chart-value-name-clr: #{f.color(gray-5)};
+  // Colors
+  --_chart-analytic-clr-green: #{f.color(neon)};
+
+  padding: 16px 24px 32px;
+  width: 100%;
+
+  @include m.background(f.v(--_chart-bg));
+
+  border-radius: 16px;
+
+  &__header {
+    @include m.flex($jc: space-between, $ai: center);
+  }
+
+  &__title {
+    @include m.ptext(16px, $w: 700, $lh: 24px, $ls: 0.16px);
+    color: f.v(--_chart-title-clr);
+  }
+
+  &__valueName {
+    @include m.ptext(12px, $w: 500, $lh: 14px, $ls: 0.12px);
+    color: f.v(--_chart-value-name-clr);
+
+    &_color {
+      &_neon {
+        --_chart-analytic-clr: #{f.v(--_chart-analytic-clr-green)};
+      }
+    }
+
+    &::before {
+      content: '';
+
+      display: inline-block;
+      margin-right: 8px;
+
+      @include m.square(10px);
+      @include m.background(f.v(--_chart-analytic-clr));
+    }
+  }
+
+  &__content {
+    position: relative;
+
+    margin-top: 22px;
+  }
+
+  &__analytics {
+    position: absolute;
+
+    width: 100%;
+    padding-inline: 56px 16px;
+
+    bottom: -20px;
+  }
+}

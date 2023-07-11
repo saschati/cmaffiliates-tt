@@ -1,0 +1,14 @@
+@use 'src/styles/core/functions' as f;
+@use 'src/styles/core/mixin' as m;
+
+.homepage {
+  @include m.flex(wrap, $jc: center, $gap: 24px);
+
+  &__chart {
+    width: 453px;
+  }
+
+  &__table {
+    width: 641px;
+  }
+}

@@ -1,0 +1,40 @@
+@use 'src/styles/core/functions' as f;
+@use 'src/styles/core/mixin' as m;
+
+.arrow {
+  // Setting component section
+  --_arrow-width: 7px;
+  --_arrow-height: 7px;
+  --_arrow-brd-width: 2px;
+  // Colors
+  --_arrow-clr-white: #{f.color(white)};
+
+  @include m.box(f.v(_arrow-width), f.v(_arrow-height));
+
+  display: block;
+  border-width: 0 f.v(_arrow-brd-width) f.v(_arrow-brd-width) 0;
+  border-style: solid;
+
+  transition: transform 0.3s;
+
+  &_color {
+    &_white {
+      border-color: f.v(_arrow-clr-white);
+    }
+  }
+
+  &_rotate {
+    &_top {
+      transform: rotate(225deg);
+    }
+    &_botton {
+      transform: rotate(45deg);
+    }
+  }
+
+  &_size {
+    &_default {
+      border-radius: 1px 15% / 10% 2px 1px;
+    }
+  }
+}

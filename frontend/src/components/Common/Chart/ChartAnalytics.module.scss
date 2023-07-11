@@ -1,0 +1,40 @@
+@use 'src/styles/core/functions' as f;
+@use 'src/styles/core/mixin' as m;
+
+/**
+ * Custom variable:
+ * --chart-analytics-stack-height: number; Analytics stack size
+ */
+.chartAnalytics {
+  // Setting component section
+  --_chart-analytics-label-clr: #{f.color(white)};
+  // Stack colors
+  --_chart-analytics-stack-neon: linear-gradient(180deg, #b3fc4f 0%, #173102 100%);
+
+  display: grid;
+  grid-template-rows: 1fr 18px;
+  grid-auto-columns: 27px;
+  grid-auto-flow: column;
+  justify-content: space-between;
+  grid-row-gap: 10px;
+
+  &__label {
+    justify-self: center;
+
+    @include m.ptext(14px, $w: 400, $lh: 18px, $ls: 0.14px);
+    color: f.v(--_chart-analytics-label-clr);
+  }
+
+  &__stack {
+    align-self: flex-end;
+
+    height: f.v(--chart-analytics-stack-height);
+    border-radius: 8px 8px 0px 0px;
+
+    &_color {
+      &_neon {
+        background: f.v(--_chart-analytics-stack-neon);
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+# Idea settings
+.idea
+
+# docker
+docker-compose.override.yml

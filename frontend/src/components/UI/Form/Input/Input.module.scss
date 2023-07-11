@@ -1,0 +1,32 @@
+@use 'src/styles/core/functions' as f;
+@use 'src/styles/core/mixin' as m;
+
+.input {
+  // Setting component section
+  --_input-bg: #{f.color(gray-2)};
+  --_input-bdr-clr: #{f.color(gray-3)};
+  --_input-clr: #{f.color(gray-4)};
+  // ==== Size ====
+  --_input-width: 100%;
+  --_input-height: 40px;
+  --_input-radius: 12px;
+
+  &__group {
+    position: relative;
+  }
+
+  &__handler {
+    @include m.box(f.v(_input-width), f.v(_input-height), f.v(_input-radius));
+    @include m.ptext(14px, $w: 500, $ls: 0.14px, $lh: 18px);
+
+    padding: 11px 16px;
+
+    background-color: f.v(_input-bg);
+    border: 1px solid f.v(--_input-bdr-clr);
+    color: f.v(_input-clr);
+  }
+
+  &__ricon {
+    position: absolute;
+  }
+}

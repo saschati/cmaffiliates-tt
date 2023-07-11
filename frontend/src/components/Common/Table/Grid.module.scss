@@ -1,0 +1,61 @@
+@use 'src/styles/core/functions' as f;
+@use 'src/styles/core/mixin' as m;
+
+/**
+ * Custom variable:
+ * --grid-col: number; Count grid column
+ */
+.grid {
+  // Setting component section
+  --_grid-header-bg: #{f.color(black)};
+  --_grid-header-clr: #{f.color(white)};
+  --_grid-clr: #{f.color(white)};
+  --_grid-black-sec: #{f.color(gray-1)};
+  --_grid-white-sec: #{f.color(gray-2)};
+  --_grid-bdr-clr: #{f.color(gray-2)};
+  --_grid-bdr-sep-clr: #{f.color(gray-1)};
+
+  display: grid;
+  grid-auto-rows: minmax(36px, min-content);
+  grid-template-columns: repeat(f.v(grid-col), minmax(153px, min-content));
+  border: 1px solid f.v(_grid-bdr-clr);
+  border-radius: 12px;
+  width: max-content;
+  overflow: hidden;
+
+  &__column {
+    @include m.flex($ai: center);
+    @include m.ptext(14px, white, $lh: 18px, $ls: 0.14px, $w: 400);
+
+    padding-right: 16px;
+    justify-content: flex-end;
+
+    &_pos {
+      &_start {
+        padding-left: 16px;
+        justify-content: flex-start;
+      }
+    }
+
+    &_type {
+      &_header {
+        @include m.text($w: 700);
+        @include m.background(f.color(black));
+
+        & + & {
+          border-left: 1px solid f.v(_grid-bdr-sep-clr);
+        }
+      }
+    }
+
+    &_sec {
+      &_black {
+        @include m.background(f.v(_grid-black-sec));
+      }
+
+      &_white {
+        @include m.background(f.v(_grid-white-sec));
+      }
+    }
+  }
+}

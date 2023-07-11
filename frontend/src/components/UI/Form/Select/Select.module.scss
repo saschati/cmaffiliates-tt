@@ -1,0 +1,68 @@
+@use 'src/styles/core/functions' as f;
+@use 'src/styles/core/mixin' as m;
+
+.select {
+  // Setting component section
+  --_select-options-bg: #{f.color(gray-2)};
+  --_select-options-bdr-clr: #{f.color(gray-3)};
+  --_select-options-clr: #{f.color(gray-4)};
+  --_select-options-scl: #{f.color(gray-3)};
+
+  position: relative;
+  cursor: pointer;
+
+  &__options {
+    width: 100%;
+    max-height: 400px;
+    overflow-y: scroll;
+
+    @include m.ptext(14px, $w: 500, $ls: 0.14px, $lh: 18px);
+
+    color: f.v(--_select-options-clr);
+
+    &::-webkit-scrollbar {
+      width: 2px;
+    }
+
+    &::-webkit-scrollbar-track {
+      width: 2px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: f.v(_select-options-scl);
+    }
+
+    &Overflow {
+      z-index: 1;
+      position: absolute;
+      width: 100%;
+      padding-block: 10px;
+      top: calc(100% - 10px);
+
+      border-style: solid;
+      border-color: f.v(--_select-options-bdr-clr);
+      border-width: 0 1px 1px 1px;
+      border-radius: 0 0 12px 12px;
+
+      @include m.background(f.v(_select-options-bg));
+    }
+  }
+
+  &__option {
+    padding: 8px 12px;
+
+    &:hover,
+    &_type_active {
+      background-color: f.color(gray-3);
+    }
+  }
+
+  &__ricon {
+    right: calc(16px + 4px);
+    top: calc(50% - 5px);
+
+    &_rotate_top {
+      top: calc(50% - 3px);
+    }
+  }
+}

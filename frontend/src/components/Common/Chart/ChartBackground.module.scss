@@ -1,0 +1,37 @@
+@use 'src/styles/core/functions' as f;
+@use 'src/styles/core/mixin' as m;
+
+/**
+ * Custom variable:
+ * --cartBackground-space: px; Space between chart lines
+ */
+.cartBackground {
+  // Setting component section
+  --_cartBackground-value-clr: #{f.color(gray-4)};
+  --_cartBackground-horizontal: #{f.color(gray-2)};
+  --_cartBackground-horizontal-style: dashed;
+
+  display: grid;
+  grid-auto-rows: 18px;
+  grid-template-columns: min-content 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: f.v(--cartBackground-space, 14px);
+
+  width: 100%;
+
+  &__horizontal {
+    height: 2px;
+
+    border-radius: 2px;
+    border: 1px dashed f.v(--_cartBackground-horizontal);
+
+    align-self: center;
+  }
+
+  &__value {
+    align-self: center;
+
+    @include m.ptext(14px, $w: 500, $lh: 18px, $ls: 0.14px);
+    color: #{f.v(--_cartBackground-value-clr)};
+  }
+}
